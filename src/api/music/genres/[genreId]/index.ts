@@ -1,7 +1,5 @@
-const genres = ["rock", "pop", "jazz", "classical"];
-
 export function GET(req: Request) {
-  return new Response(JSON.stringify(genres), {
+ return new Response("GET /api/music/genres/[genreId]/", {
     headers: { "Content-Type": "application/json; charset=utf-8" },
   });
 }
