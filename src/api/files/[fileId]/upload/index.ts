@@ -8,7 +8,7 @@ export async function POST(req: Request, params: { fileId: string }) {
     return new Response("Missing fileId parameter", { status: 400 });
   }
 
-  const MAX_SIZE = 20 * 1024 * 1024; // 20MB
+  const MAX_SIZE = 100 * 1024 * 1024; // 20MB
 
   // 1. Verificar tamaño por Content-Length (si existe) para rechazo rápido
   const contentLength = req.headers.get("content-length");
@@ -33,15 +33,16 @@ export async function POST(req: Request, params: { fileId: string }) {
 
       for (const [key, value] of formData.entries()) {
         if (value instanceof File) {
+          const fileName = value.name || `unknown_file_${Date.now()}.mp4`;
           if (value.size > MAX_SIZE) {
-            return new Response(`File ${value.name} too large (max 20MB)`, {
+            return new Response(`File ${fileName} too large (max 20MB)`, {
               status: 413,
             });
           }
 
-          const filePath = join(storageDir, value.name);
+          const filePath = join(storageDir, fileName);
           await Bun.write(filePath, value);
-          filesSaved.push(value.name);
+          filesSaved.push(fileName);
         }
       }
 

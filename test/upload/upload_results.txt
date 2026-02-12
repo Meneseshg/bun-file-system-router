@@ -1,0 +1,35 @@
+     execution: local
+        script: test.js
+        output: -
+
+     scenarios: (100.00%) 1 scenario, 30 max VUs, 1m30s max duration (incl. graceful stop):
+              * default: Up to 30 looping VUs for 1m0s over 4 stages (gracefulRampDown: 30s, gracefulStop: 30s)
+
+
+  █ TOTAL RESULTS 
+
+    checks_total.......: 16688   277.90826/s
+    checks_succeeded...: 100.00% 16688 out of 16688
+    checks_failed......: 0.00%   0 out of 16688
+
+    ✓ status es 200 o 201
+    ✓ tiempo de respuesta < 500ms
+
+    HTTP
+    http_req_duration..............: avg=3.33ms   min=293µs    med=1.38ms   max=133.39ms p(90)=5.3ms    p(95)=8.97ms  
+      { expected_response:true }...: avg=3.33ms   min=293µs    med=1.38ms   max=133.39ms p(90)=5.3ms    p(95)=8.97ms  
+    http_req_failed................: 0.00%  0 out of 8344
+    http_reqs......................: 8344   138.95413/s
+
+    EXECUTION
+    iteration_duration.............: avg=106.15ms min=100.41ms med=102.53ms max=308.09ms p(90)=109.42ms p(95)=120.09ms
+    iterations.....................: 8344   138.95413/s
+    vus............................: 11     min=1         max=29
+    vus_max........................: 30     min=30        max=30
+
+    NETWORK
+    data_received..................: 2.2 MB 37 kB/s
+    data_sent......................: 1.4 GB 23 MB/s
+
+running (1m00.0s), 00/30 VUs, 8344 complete and 0 interrupted iterations
+default ✓ [===================================] 00/30 VUs  1m0s

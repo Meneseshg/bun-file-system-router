@@ -1,0 +1,40 @@
+     execution: local
+        script: test.js
+        output: -
+
+     scenarios: (100.00%) 1 scenario, 50 max VUs, 2m30s max duration (incl. graceful stop):
+              * default: Up to 50 looping VUs for 2m0s over 3 stages (gracefulRampDown: 30s, gracefulStop: 30s)
+
+WARN[0088] The test has generated metrics with 100250 unique time series, which is higher than the suggested limit of 100000 and could cause high memory usage. Consider not using high-cardinality values like unique IDs as metric tags or, if you need them in the URL, use the name metric tag or URL grouping. See https://grafana.com/docs/k6/latest/using-k6/tags-and-groups/ for details.  component=metrics-engine-ingester
+
+
+  █ TOTAL RESULTS 
+
+    checks_total.......: 30676   255.451182/s
+    checks_succeeded...: 100.00% 30676 out of 30676
+    checks_failed......: 0.00%   0 out of 30676
+
+    ✓ status es 200 o 201
+    ✓ respuesta válida JSON
+
+    HTTP
+    http_req_duration..............: avg=3.45ms   min=366µs    med=1.85ms   max=207.71ms p(90)=4.6ms    p(95)=8.48ms  
+      { expected_response:true }...: avg=3.45ms   min=366µs    med=1.85ms   max=207.71ms p(90)=4.6ms    p(95)=8.48ms  
+    http_req_failed................: 0.00%  0 out of 15338
+    http_reqs......................: 15338  127.725591/s
+
+    EXECUTION
+    iteration_duration.............: avg=204.69ms min=200.51ms med=202.76ms max=414.09ms p(90)=206.82ms p(95)=212.69ms
+    iterations.....................: 15338  127.725591/s
+    vus............................: 1      min=1          max=49
+    vus_max........................: 50     min=50         max=50
+
+    NETWORK
+    data_received..................: 3.1 MB 26 kB/s
+    data_sent......................: 2.3 MB 19 kB/s
+
+
+
+
+running (2m00.1s), 00/50 VUs, 15338 complete and 0 interrupted iterations
+default ✓ [======================================] 00/50 VUs  2m0s

@@ -19,7 +19,7 @@ console.log(`🚀 Router inicializado. Escaneando rutas en: ${ROUTES_DIR}`);
 
 // 2. Iniciamos el servidor HTTP con Bun.serve
 const server = Bun.serve({
-  port: 3000,
+  port: 3001,
   
   // La función fetch maneja todas las peticiones entrantes
   async fetch(req) {

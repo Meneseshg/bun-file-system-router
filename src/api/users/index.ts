@@ -1,7 +1,19 @@
-export function GET(req: Request) {
-  return new Response("GET /api/users/", {
-    headers: { "Content-Type": "text/plain; charset=utf-8" },
-  });
+import { prisma } from "../../lib/db";
+
+export async function GET(req: Request) {
+  try {
+    const usuarios = await prisma.usuario.findMany();
+    console.log("Fetched users");
+    return new Response(JSON.stringify(usuarios), {
+      headers: { "Content-Type": "application/json; charset=utf-8" },
+    });
+  } catch (error) {
+    console.error("Error fetching users:", error);
+    return new Response(JSON.stringify({ error: "Internal Server Error" }), {
+      status: 500,
+      headers: { "Content-Type": "application/json; charset=utf-8" },
+    });
+  }
 }
 
 export async function POST(req: Request) {

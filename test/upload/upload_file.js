@@ -26,7 +26,7 @@ export const options = {
 
 export default function () {
   const randomShortId = generateRandomShortId(8);
-  const url = `http://localhost:3000/api/files/${randomShortId}/upload`;
+  const url = `http://localhost:3001/api/files/${randomShortId}/upload`;
 
   const data = {
     // El nombre del campo 'file' debe coincidir con lo que espera tu API
